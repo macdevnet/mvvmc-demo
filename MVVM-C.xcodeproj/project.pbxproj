@@ -7,12 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E24810131CF08A7B002513B0 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810121CF08A7B002513B0 /* ListCoordinator.swift */; };
+		E24810151CF08B55002513B0 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810141CF08B55002513B0 /* ListViewModel.swift */; };
+		E24810181CF08BC1002513B0 /* MVVMCListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810171CF08BC1002513B0 /* MVVMCListViewModel.swift */; };
+		E248101B1CF08C2D002513B0 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248101A1CF08C2D002513B0 /* ListModel.swift */; };
+		E248101D1CF08C47002513B0 /* MVVMCListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248101C1CF08C47002513B0 /* MVVMCListModel.swift */; };
+		E24810211CF08D34002513B0 /* MVVMCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810201CF08D34002513B0 /* MVVMCListViewController.swift */; };
+		E24810241CF09223002513B0 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810231CF09223002513B0 /* DataItem.swift */; };
+		E24810281CF09282002513B0 /* MVVMCDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810271CF09282002513B0 /* MVVMCDataItem.swift */; };
+		E248102A1CF094B7002513B0 /* MVVMCItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810291CF094B7002513B0 /* MVVMCItemTableViewCell.swift */; };
+		E248102C1CF0A31F002513B0 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248102B1CF0A31F002513B0 /* DetailCoordinator.swift */; };
+		E248102E1CF11203002513B0 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248102D1CF11203002513B0 /* DetailModel.swift */; };
+		E24810301CF11241002513B0 /* MVVMCDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E248102F1CF11241002513B0 /* MVVMCDetailModel.swift */; };
+		E24810321CF11303002513B0 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810311CF11303002513B0 /* DetailViewModel.swift */; };
+		E24810341CF113A1002513B0 /* MVVMCDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810331CF113A1002513B0 /* MVVMCDetailViewModel.swift */; };
+		E24810361CF1156E002513B0 /* MVVMCDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810351CF1156E002513B0 /* MVVMCDetailViewController.swift */; };
 		E25114631CED9DC100D9868B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25114621CED9DC100D9868B /* AppDelegate.swift */; };
-		E25114651CED9DC100D9868B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25114641CED9DC100D9868B /* ViewController.swift */; };
-		E25114681CED9DC100D9868B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E25114661CED9DC100D9868B /* Main.storyboard */; };
 		E251146A1CED9DC100D9868B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E25114691CED9DC100D9868B /* Assets.xcassets */; };
 		E251146D1CED9DC100D9868B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E251146B1CED9DC100D9868B /* LaunchScreen.storyboard */; };
 		E25114781CED9DC100D9868B /* MVVM_CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25114771CED9DC100D9868B /* MVVM_CTests.swift */; };
+		E296BBBC1CEDA08B00420864 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBBB1CEDA08B00420864 /* AppCoordinator.swift */; };
+		E296BBBE1CEDA0C500420864 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBBD1CEDA0C500420864 /* Coordinator.swift */; };
+		E296BBC01CEDA30100420864 /* MVVM-C.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E296BBBF1CEDA30100420864 /* MVVM-C.storyboard */; };
+		E296BBC21CEDA41900420864 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBC11CEDA41900420864 /* AuthenticationCoordinator.swift */; };
+		E296BBC61CEDF21400420864 /* MVVMCAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBC51CEDF21400420864 /* MVVMCAuthenticationViewController.swift */; };
+		E296BBC91CEEE89100420864 /* AuthenticateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBC81CEEE89100420864 /* AuthenticateViewModel.swift */; };
+		E296BBCB1CEEE94B00420864 /* AuthenticateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBCA1CEEE94B00420864 /* AuthenticateModel.swift */; };
+		E296BBCD1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBCC1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift */; };
+		E296BBD01CEEEC9F00420864 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E296BBCE1CEEEC9F00420864 /* Localizable.strings */; };
+		E296BBD21CEEEE9500420864 /* MVVMCAuthenticateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBD11CEEEE9500420864 /* MVVMCAuthenticateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +49,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E24810121CF08A7B002513B0 /* ListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		E24810141CF08B55002513B0 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		E24810171CF08BC1002513B0 /* MVVMCListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListViewModel.swift; sourceTree = "<group>"; };
+		E248101A1CF08C2D002513B0 /* ListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		E248101C1CF08C47002513B0 /* MVVMCListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListModel.swift; sourceTree = "<group>"; };
+		E24810201CF08D34002513B0 /* MVVMCListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListViewController.swift; sourceTree = "<group>"; };
+		E24810231CF09223002513B0 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
+		E24810271CF09282002513B0 /* MVVMCDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCDataItem.swift; sourceTree = "<group>"; };
+		E24810291CF094B7002513B0 /* MVVMCItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCItemTableViewCell.swift; sourceTree = "<group>"; };
+		E248102B1CF0A31F002513B0 /* DetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		E248102D1CF11203002513B0 /* DetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		E248102F1CF11241002513B0 /* MVVMCDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCDetailModel.swift; sourceTree = "<group>"; };
+		E24810311CF11303002513B0 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		E24810331CF113A1002513B0 /* MVVMCDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCDetailViewModel.swift; sourceTree = "<group>"; };
+		E24810351CF1156E002513B0 /* MVVMCDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCDetailViewController.swift; sourceTree = "<group>"; };
 		E251145F1CED9DC100D9868B /* MVVM-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25114621CED9DC100D9868B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E25114641CED9DC100D9868B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E25114671CED9DC100D9868B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E25114691CED9DC100D9868B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E251146C1CED9DC100D9868B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E251146E1CED9DC100D9868B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25114731CED9DC100D9868B /* MVVM-CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM-CTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25114771CED9DC100D9868B /* MVVM_CTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_CTests.swift; sourceTree = "<group>"; };
 		E25114791CED9DC100D9868B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E296BBBB1CEDA08B00420864 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E296BBBD1CEDA0C500420864 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E296BBBF1CEDA30100420864 /* MVVM-C.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "MVVM-C.storyboard"; sourceTree = "<group>"; };
+		E296BBC11CEDA41900420864 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		E296BBC51CEDF21400420864 /* MVVMCAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCAuthenticationViewController.swift; sourceTree = "<group>"; };
+		E296BBC81CEEE89100420864 /* AuthenticateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateViewModel.swift; sourceTree = "<group>"; };
+		E296BBCA1CEEE94B00420864 /* AuthenticateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateModel.swift; sourceTree = "<group>"; };
+		E296BBCC1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCAuthenticateViewModel.swift; sourceTree = "<group>"; };
+		E296BBCF1CEEEC9F00420864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E296BBD11CEEEE9500420864 /* MVVMCAuthenticateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCAuthenticateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +102,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E24810161CF08B63002513B0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E296BBC81CEEE89100420864 /* AuthenticateViewModel.swift */,
+				E24810141CF08B55002513B0 /* ListViewModel.swift */,
+				E24810311CF11303002513B0 /* DetailViewModel.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		E24810191CF08C1A002513B0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E296BBCA1CEEE94B00420864 /* AuthenticateModel.swift */,
+				E248101A1CF08C2D002513B0 /* ListModel.swift */,
+				E248102D1CF11203002513B0 /* DetailModel.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		E24810221CF09212002513B0 /* Data Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E24810231CF09223002513B0 /* DataItem.swift */,
+			);
+			name = "Data Protocols";
+			sourceTree = "<group>";
+		};
+		E24810251CF09256002513B0 /* Data Sructs */ = {
+			isa = PBXGroup;
+			children = (
+				E24810271CF09282002513B0 /* MVVMCDataItem.swift */,
+			);
+			name = "Data Sructs";
+			sourceTree = "<group>";
+		};
+		E24810261CF09263002513B0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E24810221CF09212002513B0 /* Data Protocols */,
+				E24810251CF09256002513B0 /* Data Sructs */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		E25114561CED9DC100D9868B = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +168,15 @@
 		E25114611CED9DC100D9868B /* MVVM-C */ = {
 			isa = PBXGroup;
 			children = (
+				E296BBB71CEDA07500420864 /* Coordinators */,
+				E296BBB81CEDA07500420864 /* Models */,
+				E296BBB91CEDA07500420864 /* ViewModels */,
+				E296BBBA1CEDA07500420864 /* Views */,
 				E25114621CED9DC100D9868B /* AppDelegate.swift */,
-				E25114641CED9DC100D9868B /* ViewController.swift */,
-				E25114661CED9DC100D9868B /* Main.storyboard */,
 				E25114691CED9DC100D9868B /* Assets.xcassets */,
 				E251146B1CED9DC100D9868B /* LaunchScreen.storyboard */,
 				E251146E1CED9DC100D9868B /* Info.plist */,
+				E296BBCE1CEEEC9F00420864 /* Localizable.strings */,
 			);
 			path = "MVVM-C";
 			sourceTree = "<group>";
@@ -94,6 +188,53 @@
 				E25114791CED9DC100D9868B /* Info.plist */,
 			);
 			path = "MVVM-CTests";
+			sourceTree = "<group>";
+		};
+		E296BBB71CEDA07500420864 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				E296BBBD1CEDA0C500420864 /* Coordinator.swift */,
+				E296BBBB1CEDA08B00420864 /* AppCoordinator.swift */,
+				E296BBC11CEDA41900420864 /* AuthenticationCoordinator.swift */,
+				E24810121CF08A7B002513B0 /* ListCoordinator.swift */,
+				E248102B1CF0A31F002513B0 /* DetailCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		E296BBB81CEDA07500420864 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E24810261CF09263002513B0 /* Data */,
+				E24810191CF08C1A002513B0 /* Protocols */,
+				E296BBD11CEEEE9500420864 /* MVVMCAuthenticateModel.swift */,
+				E248101C1CF08C47002513B0 /* MVVMCListModel.swift */,
+				E248102F1CF11241002513B0 /* MVVMCDetailModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E296BBB91CEDA07500420864 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E24810161CF08B63002513B0 /* Protocols */,
+				E296BBCC1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift */,
+				E24810171CF08BC1002513B0 /* MVVMCListViewModel.swift */,
+				E24810331CF113A1002513B0 /* MVVMCDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E296BBBA1CEDA07500420864 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E296BBBF1CEDA30100420864 /* MVVM-C.storyboard */,
+				E296BBC51CEDF21400420864 /* MVVMCAuthenticationViewController.swift */,
+				E24810201CF08D34002513B0 /* MVVMCListViewController.swift */,
+				E24810291CF094B7002513B0 /* MVVMCItemTableViewCell.swift */,
+				E24810351CF1156E002513B0 /* MVVMCDetailViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,8 +319,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E251146D1CED9DC100D9868B /* LaunchScreen.storyboard in Resources */,
+				E296BBD01CEEEC9F00420864 /* Localizable.strings in Resources */,
+				E296BBC01CEDA30100420864 /* MVVM-C.storyboard in Resources */,
 				E251146A1CED9DC100D9868B /* Assets.xcassets in Resources */,
-				E25114681CED9DC100D9868B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +339,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E25114651CED9DC100D9868B /* ViewController.swift in Sources */,
+				E24810181CF08BC1002513B0 /* MVVMCListViewModel.swift in Sources */,
+				E296BBBC1CEDA08B00420864 /* AppCoordinator.swift in Sources */,
+				E24810241CF09223002513B0 /* DataItem.swift in Sources */,
+				E296BBC91CEEE89100420864 /* AuthenticateViewModel.swift in Sources */,
+				E248102C1CF0A31F002513B0 /* DetailCoordinator.swift in Sources */,
+				E24810211CF08D34002513B0 /* MVVMCListViewController.swift in Sources */,
 				E25114631CED9DC100D9868B /* AppDelegate.swift in Sources */,
+				E296BBD21CEEEE9500420864 /* MVVMCAuthenticateModel.swift in Sources */,
+				E248101D1CF08C47002513B0 /* MVVMCListModel.swift in Sources */,
+				E24810321CF11303002513B0 /* DetailViewModel.swift in Sources */,
+				E296BBC61CEDF21400420864 /* MVVMCAuthenticationViewController.swift in Sources */,
+				E296BBCB1CEEE94B00420864 /* AuthenticateModel.swift in Sources */,
+				E296BBC21CEDA41900420864 /* AuthenticationCoordinator.swift in Sources */,
+				E24810341CF113A1002513B0 /* MVVMCDetailViewModel.swift in Sources */,
+				E24810301CF11241002513B0 /* MVVMCDetailModel.swift in Sources */,
+				E296BBCD1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift in Sources */,
+				E24810131CF08A7B002513B0 /* ListCoordinator.swift in Sources */,
+				E248101B1CF08C2D002513B0 /* ListModel.swift in Sources */,
+				E248102A1CF094B7002513B0 /* MVVMCItemTableViewCell.swift in Sources */,
+				E248102E1CF11203002513B0 /* DetailModel.swift in Sources */,
+				E296BBBE1CEDA0C500420864 /* Coordinator.swift in Sources */,
+				E24810361CF1156E002513B0 /* MVVMCDetailViewController.swift in Sources */,
+				E24810281CF09282002513B0 /* MVVMCDataItem.swift in Sources */,
+				E24810151CF08B55002513B0 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,20 +385,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E25114661CED9DC100D9868B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E25114671CED9DC100D9868B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E251146B1CED9DC100D9868B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E251146C1CED9DC100D9868B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E296BBCE1CEEEC9F00420864 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E296BBCF1CEEEC9F00420864 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -388,6 +552,7 @@
 				E251147E1CED9DC100D9868B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E251147F1CED9DC100D9868B /* Build configuration list for PBXNativeTarget "MVVM-CTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +561,7 @@
 				E25114811CED9DC100D9868B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
