@@ -22,7 +22,6 @@ class MVVMCDetailViewModel: DetailViewModel
     
     var model: DetailModel? {
         didSet {
-            detail = nil;
             model?.detail({ (item) in
                 self.detail = item
             })
