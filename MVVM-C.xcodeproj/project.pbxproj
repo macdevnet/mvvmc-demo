@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		65DD78761D116FEF00046364 /* DataItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD78741D116FEF00046364 /* DataItemViewModel.swift */; };
 		65DD78771D116FEF00046364 /* MVVMCDataItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD78751D116FEF00046364 /* MVVMCDataItemViewModel.swift */; };
+		65FF57A91D117D510090DF88 /* DataItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD78741D116FEF00046364 /* DataItemViewModel.swift */; };
+		65FF57AA1D117D510090DF88 /* MVVMCDataItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DD78751D116FEF00046364 /* MVVMCDataItemViewModel.swift */; };
 		E241AB991CF35BF3005A2CCA /* MVVMCAuthenticateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241AB981CF35BF3005A2CCA /* MVVMCAuthenticateViewModelTests.swift */; };
 		E241AB9B1CF35E14005A2CCA /* MVVMCAuthenticateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBD11CEEEE9500420864 /* MVVMCAuthenticateModel.swift */; };
 		E241AB9C1CF35E1A005A2CCA /* AuthenticateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296BBCA1CEEE94B00420864 /* AuthenticateModel.swift */; };
@@ -398,6 +400,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FF57A91D117D510090DF88 /* DataItemViewModel.swift in Sources */,
+				65FF57AA1D117D510090DF88 /* MVVMCDataItemViewModel.swift in Sources */,
 				E241ABA81CF35EAE005A2CCA /* MVVMCDetailViewModel.swift in Sources */,
 				E241ABA71CF35EAE005A2CCA /* MVVMCListViewModel.swift in Sources */,
 				E241ABA21CF35EA9005A2CCA /* ListViewModel.swift in Sources */,
