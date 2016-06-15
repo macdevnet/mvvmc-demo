@@ -41,10 +41,11 @@ class MVVMCListViewModel: ListViewModel
         return 0
     }
     
-    func itemAtIndex(index: Int) -> DataItem?
+    func itemAtIndex(index: Int) -> DataItemViewModel?
     {
         if let items = items where items.count > index {
-            return items[index]
+            let dataItem = items[index]
+            return MVVMCDataItemViewModel(withDataItem: dataItem)
         }
         return nil
     }

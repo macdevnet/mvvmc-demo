@@ -14,7 +14,7 @@ class MVVMCDetailViewModel: DetailViewModel
     weak var viewDelegate: DetailViewModelViewDelegate?
     weak var coordinatorDelegate: DetailViewModelCoordinatorDelegate?
     
-    private(set) var detail: DataItem? {
+    private(set) var detail: DataItemViewModel? {
         didSet {
             viewDelegate?.detailDidChange(viewModel: self)
         }
@@ -23,7 +23,7 @@ class MVVMCDetailViewModel: DetailViewModel
     var model: DetailModel? {
         didSet {
             model?.detail({ (item) in
-                self.detail = item
+                self.detail = MVVMCDataItemViewModel(withDataItem: item)
             })
         }
     }

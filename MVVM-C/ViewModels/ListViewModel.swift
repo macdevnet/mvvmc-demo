@@ -27,6 +27,6 @@ protocol ListViewModel
     var title: String { get }
     
     var numberOfItems: Int { get }
-    func itemAtIndex(index: Int) -> DataItem?
+    func itemAtIndex(index: Int) -> DataItemViewModel?
     func useItemAtIndex(index: Int)
 }

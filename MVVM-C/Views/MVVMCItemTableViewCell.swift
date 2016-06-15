@@ -12,7 +12,7 @@ class MVVMCItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     
-    var item: DataItem? {
+    var item: DataItemViewModel? {
         didSet {
             if let item = item {
                 nameLabel.text = item.name

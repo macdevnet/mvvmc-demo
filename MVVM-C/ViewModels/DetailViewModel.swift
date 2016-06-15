@@ -24,6 +24,6 @@ protocol DetailViewModel
     var model: DetailModel? { get set }
     var viewDelegate: DetailViewModelViewDelegate? { get set }
     var coordinatorDelegate: DetailViewModelCoordinatorDelegate? { get set}
-    var detail: DataItem? { get }
+    var detail: DataItemViewModel? { get }
     func done()
 }
