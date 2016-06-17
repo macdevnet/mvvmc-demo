@@ -4,7 +4,7 @@ This code is the sample code from a talk called MVVM-C in Practice presented at 
 
 ## The talk
 + Slides: Can be found [here](https://speakerdeck.com/macdevnet/mvvm-c-in-practice)
-+ Video: Not Yet Released
++ Video: Can be found [here](https://www.youtube.com/watch?v=9VojuJpUuE8&list=PLdr22uU_wISqm9QbnczWxXs9qyuWpSU4k&index=6)
 
 
 
