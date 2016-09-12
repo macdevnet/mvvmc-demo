@@ -11,7 +11,7 @@ import UIKit
 
 protocol DetailCoordinatorDelegate: class
 {
-    func detailCoordinatorDidFinish(detailCoordinator detailCoordinator: DetailCoordinator)
+    func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator)
 }
 
 class DetailCoordinator: Coordinator
@@ -29,7 +29,7 @@ class DetailCoordinator: Coordinator
     func start()
     {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
-        if let vc = storyboard.instantiateViewControllerWithIdentifier("Detail") as? MVVMCDetailViewController {
+        if let vc = storyboard.instantiateViewController(withIdentifier: "Detail") as? MVVMCDetailViewController {
             let viewModel =  MVVMCDetailViewModel()
             viewModel.model = MVVMCDetailModel(detailItem: dataItem)
             viewModel.coordinatorDelegate = self
@@ -42,7 +42,7 @@ class DetailCoordinator: Coordinator
 extension DetailCoordinator: DetailViewModelCoordinatorDelegate
 {
     
- func detailViewModelDidEnd(viewModel: DetailViewModel)
+ func detailViewModelDidEnd(_ viewModel: DetailViewModel)
  {
     delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
  }

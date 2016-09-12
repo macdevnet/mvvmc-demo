@@ -26,20 +26,20 @@ class MVVMCAuthenticationViewController: UIViewController
         }
     }
     
-    private var isLoaded: Bool = false
+    fileprivate var isLoaded: Bool = false
     
     override func viewDidLoad()
     {
         title = "Login"
         isLoaded = true;
         
-        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: UIControlEvents.editingChanged)
 
         refreshDisplay()
     }
     
-    private func refreshDisplay()
+    fileprivate func refreshDisplay()
     {
         guard isLoaded else { return }
         
@@ -47,28 +47,28 @@ class MVVMCAuthenticationViewController: UIViewController
             emailField.text = viewModel.email
             passwordField.text = viewModel.password
             errorMessageLabel.text = viewModel.errorMessage
-            loginButton.enabled = viewModel.canSubmit
+            loginButton.isEnabled = viewModel.canSubmit
         } else {
             emailField.text = ""
             passwordField.text = ""
             errorMessageLabel.text = ""
-            loginButton.enabled = false
+            loginButton.isEnabled = false
         }
     }
     
-    @IBAction func loginButtonPressed(sender: AnyObject)
+    @IBAction func loginButtonPressed(_ sender: AnyObject)
     {
         viewModel?.submit()
     }
     
-    func emailFieldDidChange(textField: UITextField)
+    func emailFieldDidChange(_ textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.email = text
         }
     }
     
-    func passwordFieldDidChange(textField: UITextField)
+    func passwordFieldDidChange(_ textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.password = text
@@ -80,13 +80,13 @@ class MVVMCAuthenticationViewController: UIViewController
 /// AuthenticateViewModelViewDelegate Implementation
 extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate
 {
-    func canSubmitStatusDidChange(viewModel: AuthenticateViewModel, status: Bool)
+    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool)
     {
-        loginButton.enabled = status
+        loginButton.isEnabled = status
     }
     
     
-    func errorMessageDidChange(viewModel: AuthenticateViewModel, message: String)
+    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String)
     {
         errorMessageLabel.text = message
     }

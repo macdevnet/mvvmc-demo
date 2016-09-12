@@ -12,14 +12,14 @@ import Foundation
 
 protocol AuthenticateViewModelViewDelegate: class
 {
-    func canSubmitStatusDidChange(viewModel: AuthenticateViewModel, status: Bool)
-    func errorMessageDidChange(viewModel: AuthenticateViewModel, message: String)
+    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool)
+    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String)
 }
 
 
 protocol AuthenticateViewModelCoordinatorDelegate: class
 {
-    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel)
+    func authenticateViewModelDidLogin(viewModel: AuthenticateViewModel)
 }
 
 

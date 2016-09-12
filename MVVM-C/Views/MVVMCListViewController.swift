@@ -24,7 +24,7 @@ class MVVMCListViewController: UITableViewController {
     
     func refreshDisplay()
     {
-        if let viewModel = viewModel where isLoaded {
+        if let viewModel = viewModel , isLoaded {
             title = viewModel.title
         } else {
             title = ""
@@ -45,12 +45,12 @@ class MVVMCListViewController: UITableViewController {
 
 extension MVVMCListViewController
 {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let viewModel = viewModel {
             return viewModel.numberOfItems
@@ -59,21 +59,21 @@ extension MVVMCListViewController
         return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! MVVMCItemTableViewCell
-        cell.item = viewModel?.itemAtIndex(indexPath.row)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! MVVMCItemTableViewCell
+        cell.item = viewModel?.itemAtIndex((indexPath as NSIndexPath).row)
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        viewModel?.useItemAtIndex(indexPath.row)
+        viewModel?.useItemAtIndex((indexPath as NSIndexPath).row)
     }
 }
 
 extension MVVMCListViewController: ListViewModelViewDelegate
 {
-    func itemsDidChange(viewModel viewModel: ListViewModel)
+    func itemsDidChange(viewModel: ListViewModel)
     {
         tableView.reloadData()
     }

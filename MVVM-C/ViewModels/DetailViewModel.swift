@@ -10,13 +10,13 @@ import Foundation
 
 protocol DetailViewModelViewDelegate: class
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel)
+    func detailDidChange(viewModel: DetailViewModel)
 }
 
 
 protocol DetailViewModelCoordinatorDelegate: class
 {
-    func detailViewModelDidEnd(viewModel: DetailViewModel)
+    func detailViewModelDidEnd(_ viewModel: DetailViewModel)
 }
 
 protocol DetailViewModel

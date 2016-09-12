@@ -14,7 +14,7 @@ class MVVMCListViewModel: ListViewModel
     weak var viewDelegate: ListViewModelViewDelegate?
     weak var coordinatorDelegate: ListViewModelCoordinatorDelegate?
 
-    private var items: [DataItem]? {
+    fileprivate var items: [DataItem]? {
         didSet {
             viewDelegate?.itemsDidChange(viewModel: self)
         }
@@ -41,17 +41,17 @@ class MVVMCListViewModel: ListViewModel
         return 0
     }
     
-    func itemAtIndex(index: Int) -> DataItem?
+    func itemAtIndex(_ index: Int) -> DataItem?
     {
-        if let items = items where items.count > index {
+        if let items = items , items.count > index {
             return items[index]
         }
         return nil
     }
     
-    func useItemAtIndex(index: Int)
+    func useItemAtIndex(_ index: Int)
     {
-        if let items = items, coordinatorDelegate = coordinatorDelegate  where index < items.count {
+        if let items = items, let coordinatorDelegate = coordinatorDelegate  , index < items.count {
             coordinatorDelegate.listViewModelDidSelectData(self, data: items[index])
         }
     }

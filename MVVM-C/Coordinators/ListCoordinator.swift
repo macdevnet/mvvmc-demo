@@ -10,7 +10,7 @@ import UIKit
 
 protocol ListCoordinatorDelegate: class
 {
-    func listCoordinatorDidFinish(listCoordinator listCoordinator: ListCoordinator)
+    func listCoordinatorDidFinish(listCoordinator: ListCoordinator)
 }
 
 class ListCoordinator: Coordinator
@@ -29,7 +29,7 @@ class ListCoordinator: Coordinator
     func start()
     {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
-        listViewController = storyboard.instantiateViewControllerWithIdentifier("List") as? MVVMCListViewController
+        listViewController = storyboard.instantiateViewController(withIdentifier: "List") as? MVVMCListViewController
         
         guard let listViewController = listViewController else { return }
         
@@ -43,7 +43,7 @@ class ListCoordinator: Coordinator
 
 extension ListCoordinator: ListViewModelCoordinatorDelegate
 {
-    func listViewModelDidSelectData(viewModel: ListViewModel, data: DataItem)
+    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem)
     {
         detailCoordinator = DetailCoordinator(window: window, dataItem: data)
         detailCoordinator?.delegate = self
@@ -53,7 +53,7 @@ extension ListCoordinator: ListViewModelCoordinatorDelegate
 
 extension ListCoordinator: DetailCoordinatorDelegate
 {
-    func detailCoordinatorDidFinish(detailCoordinator detailCoordinator: DetailCoordinator)
+    func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator)
     {
         self.detailCoordinator = nil
         window.rootViewController = listViewController

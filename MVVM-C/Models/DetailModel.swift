@@ -10,5 +10,5 @@ import Foundation
 
 protocol DetailModel
 {
-    func detail(completionHandler: (item: DataItem?) -> Void)
+    func detail(_ completionHandler: (_ item: DataItem?) -> Void)
 }

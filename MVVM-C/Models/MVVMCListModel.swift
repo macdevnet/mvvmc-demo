@@ -10,13 +10,13 @@ import Foundation
 
 class MVVMCListModel: ListModel
 {
-    private var items = [DataItem]()
+    fileprivate var items = [DataItem]()
     
     init() {
         createDataItems()
     }
     
-    private func createDataItems()
+    fileprivate func createDataItems()
     {
         items.append(MVVMCDataItem(name: "James T Kirk", role: "Captain"))
         items.append(MVVMCDataItem(name: "Spock", role: "Commander"))
@@ -27,9 +27,9 @@ class MVVMCListModel: ListModel
         items.append(MVVMCDataItem(name: "Pavel Chekov", role: "Ensign"))
     }
     
-    func items(completionHandler: (items: [DataItem]) -> Void)
+    func items(_ completionHandler: (_ items: [DataItem]) -> Void)
     {
-        completionHandler(items: items)
+        completionHandler(items)
     }
 }
    

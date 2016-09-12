@@ -10,7 +10,7 @@ import UIKit
 
 protocol AuthenticationCoordinatorDelegate: class
 {
-    func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator)
+    func authenticationCoordinatorDidFinish(authenticationCoordinator: AuthenticationCoordinator)
 }
 
 class AuthenticationCoordinator: Coordinator
@@ -26,7 +26,7 @@ class AuthenticationCoordinator: Coordinator
     func start()
     {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
-        if let vc = storyboard.instantiateViewControllerWithIdentifier("Authentication") as? MVVMCAuthenticationViewController {
+        if let vc = storyboard.instantiateViewController(withIdentifier: "Authentication") as? MVVMCAuthenticationViewController {
             let viewModel =  MVVMCAuthenticateViewModel()
             viewModel.model = MVVMCAuthenticateModel()
             viewModel.coordinatorDelegate = self
@@ -38,7 +38,7 @@ class AuthenticationCoordinator: Coordinator
 
 extension AuthenticationCoordinator: AuthenticateViewModelCoordinatorDelegate
 {
-    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel)
+    func authenticateViewModelDidLogin(viewModel: AuthenticateViewModel)
     {
         delegate?.authenticationCoordinatorDidFinish(authenticationCoordinator: self)
     }

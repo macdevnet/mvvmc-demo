@@ -10,12 +10,12 @@ import Foundation
 
 protocol ListViewModelViewDelegate: class
 {
-    func itemsDidChange(viewModel viewModel: ListViewModel)
+    func itemsDidChange(viewModel: ListViewModel)
 }
 
 protocol ListViewModelCoordinatorDelegate: class
 {
-    func listViewModelDidSelectData(viewModel: ListViewModel, data: DataItem)
+    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem)
 }
 
 protocol ListViewModel
@@ -27,6 +27,6 @@ protocol ListViewModel
     var title: String { get }
     
     var numberOfItems: Int { get }
-    func itemAtIndex(index: Int) -> DataItem?
-    func useItemAtIndex(index: Int)
+    func itemAtIndex(_ index: Int) -> DataItem?
+    func useItemAtIndex(_ index: Int)
 }

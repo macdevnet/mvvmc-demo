@@ -10,7 +10,7 @@ import Foundation
 
 class MVVMCAuthenticateModel: AuthenticateModel
 {
-    func login(email email: String, password: String, completionHandler: (error: NSError?) ->())
+    func login(email: String, password: String, completionHandler: (_ error: NSError?) ->())
     {
         var error: NSError? = nil
         if email != "scotty@example.com" || password != "password" {
@@ -18,6 +18,6 @@ class MVVMCAuthenticateModel: AuthenticateModel
                             code: 1,
                             userInfo: [NSLocalizedDescriptionKey: "Invalid Email or Password"])
         }
-        completionHandler(error: error)
+        completionHandler(error)
     }
 }

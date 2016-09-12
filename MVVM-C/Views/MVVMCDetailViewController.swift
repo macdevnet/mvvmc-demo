@@ -23,7 +23,7 @@ class MVVMCDetailViewController: UIViewController {
         }
     }
     
-    private var isLoaded: Bool = false
+    fileprivate var isLoaded: Bool = false
 
     
     override func viewDidLoad()
@@ -33,7 +33,7 @@ class MVVMCDetailViewController: UIViewController {
         refreshDisplay()
     }
 
-    private func refreshDisplay()
+    fileprivate func refreshDisplay()
     {
         guard isLoaded else { return }
         if let viewModel = viewModel {
@@ -46,7 +46,7 @@ class MVVMCDetailViewController: UIViewController {
     }
     
     
-    @IBAction func doneButtonPressed(sender: AnyObject)
+    @IBAction func doneButtonPressed(_ sender: AnyObject)
     {
         viewModel?.done();
     }
@@ -55,7 +55,7 @@ class MVVMCDetailViewController: UIViewController {
 
 extension MVVMCDetailViewController: DetailViewModelViewDelegate
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel)
+    func detailDidChange(viewModel: DetailViewModel)
     {
         refreshDisplay()
     }

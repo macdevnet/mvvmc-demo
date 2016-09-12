@@ -11,15 +11,15 @@ import Foundation
 class MVVMCDetailModel: DetailModel
 {
     
-    private var item: DataItem?
+    fileprivate var item: DataItem?
     
     init(detailItem: DataItem)
     {
         self.item = detailItem
     }
     
-    func detail(completionHandler: (item: DataItem?) -> Void)
+    func detail(_ completionHandler: (_ item: DataItem?) -> Void)
     {
-        completionHandler(item: item)
+        completionHandler(item)
     }
 }

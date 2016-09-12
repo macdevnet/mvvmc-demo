@@ -31,7 +31,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     }
     
     
-    private var emailIsValidFormat: Bool = false
+    fileprivate var emailIsValidFormat: Bool = false
     
     /// Password
     var password: String = "" {
@@ -47,7 +47,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     }
     
     
-    private var passwordIsValidFormat: Bool = false
+    fileprivate var passwordIsValidFormat: Bool = false
     
     /// Submit
     var canSubmit: Bool {
@@ -57,7 +57,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     
     
     /// Errors
-    private(set) var errorMessage: String = "" {
+    fileprivate(set) var errorMessage: String = "" {
         didSet {
             if oldValue != errorMessage {
                 viewDelegate?.errorMessageDidChange(self, message: errorMessage)
@@ -65,18 +65,18 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
         }
     }
     
-    private func validateEmailFormat(email: String) -> Bool
+    fileprivate func validateEmailFormat(_ email: String) -> Bool
     {
         let REGEX: String
         REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
-        return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluateWithObject(email)
+        return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: email)
     }
     
     
     /// Validate password is at least 6 characters
-    private func validatePasswordFormat(password: String) -> Bool
+    fileprivate func validatePasswordFormat(_ password: String) -> Bool
     {
-        let trimmedString = password.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedString = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         return trimmedString.characters.count > 5
     }
     
@@ -84,14 +84,14 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     func submit()
     {
         errorMessage = ""
-        guard let dataModel = model where canSubmit else {
+        guard let dataModel = model , canSubmit else {
             errorMessage = NSLocalizedString("NOT_READY_TO_SUBMIT", comment: "")
             return
         }
         
         let modelCompletionHandler = { (error: NSError?) in
             //Make sure we are on the main thread
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 guard let error = error else {
                     self.coordinatorDelegate?.authenticateViewModelDidLogin(viewModel: self)
                     return
