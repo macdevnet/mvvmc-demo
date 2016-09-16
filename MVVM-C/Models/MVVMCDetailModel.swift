@@ -20,6 +20,7 @@ class MVVMCDetailModel: DetailModel
     
     func detail(_ completionHandler: @escaping (_ item: DataItem?) -> Void)
     {
+        // Simulate Aysnchronous data access
         DispatchQueue.global().async {
             completionHandler(self.item)
         }

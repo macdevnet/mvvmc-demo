@@ -29,6 +29,7 @@ class MVVMCListModel: ListModel
     
     func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void)
     {
+        // Simulate Aysnchronous data access
         DispatchQueue.global().async {
             completionHandler(self.items)
         }
