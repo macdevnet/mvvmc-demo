@@ -17,7 +17,6 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     
     
     /// Email
-    
     var email: String = "" {
         didSet {
             if oldValue != email {

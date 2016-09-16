@@ -18,8 +18,10 @@ class MVVMCDetailModel: DetailModel
         self.item = detailItem
     }
     
-    func detail(_ completionHandler: (_ item: DataItem?) -> Void)
+    func detail(_ completionHandler: @escaping (_ item: DataItem?) -> Void)
     {
-        completionHandler(item)
+        DispatchQueue.global().async {
+            completionHandler(self.item)
+        }
     }
 }

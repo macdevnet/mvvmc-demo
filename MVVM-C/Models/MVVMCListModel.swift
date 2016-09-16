@@ -27,9 +27,11 @@ class MVVMCListModel: ListModel
         items.append(MVVMCDataItem(name: "Pavel Chekov", role: "Ensign"))
     }
     
-    func items(_ completionHandler: (_ items: [DataItem]) -> Void)
+    func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void)
     {
-        completionHandler(items)
+        DispatchQueue.global().async {
+            completionHandler(self.items)
+        }
     }
 }
    

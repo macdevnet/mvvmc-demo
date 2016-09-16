@@ -11,5 +11,5 @@ import Foundation
 
 protocol AuthenticateModel
 {
-    func login(email: String, password: String, completionHandler: (_ error: NSError?) ->())
+    func login(email: String, password: String, completionHandler: @escaping (_ error: NSError?) ->())
 }
