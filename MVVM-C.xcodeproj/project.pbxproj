@@ -307,7 +307,7 @@
 				TargetAttributes = {
 					E251145E1CED9DC100D9868B = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = V28LQPULGN;
+						DevelopmentTeam = 4949QYQQ2S;
 						LastSwiftMigration = 0800;
 					};
 					E25114721CED9DC100D9868B = {
@@ -536,7 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V28LQPULGN;
+				DEVELOPMENT_TEAM = 4949QYQQ2S;
 				INFOPLIST_FILE = "MVVM-C/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.streambyte.MVVM-C";
@@ -549,7 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V28LQPULGN;
+				DEVELOPMENT_TEAM = 4949QYQQ2S;
 				INFOPLIST_FILE = "MVVM-C/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.streambyte.MVVM-C";
