@@ -10,7 +10,17 @@ import XCTest
 
 class MVVMCListViewModelTests: XCTestCase {
     
-    var currentExpectaion: XCTestExpectation?
+    var currentExpectation: XCTestExpectation?
+    
+    override func setUp() {
+        super.setUp()
+        currentExpectation = nil
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        // Nothing
+    }
     
     func testDefaults() {
         let vm = MVVMCListViewModel()
@@ -95,7 +105,7 @@ class MVVMCListViewModelTests: XCTestCase {
         // In normal testing we would create a ListModel implementation with fixed test data to use,
         vm.model = MVVMCListModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectation(description: "testUseItemAtIndex")
+        currentExpectation =  expectation(description: "testUseItemAtIndex")
         vm.useItemAt(index: 6)
         
         waitForExpectations(timeout: 1) { error in
@@ -109,6 +119,6 @@ extension MVVMCListViewModelTests: ListViewModelCoordinatorDelegate {
     func listDidSelectDataFor(viewModel: ListViewModel, data: DataItem) {
         XCTAssertEqual("Pavel Chekov", data.name)
         XCTAssertEqual("Ensign", data.role)
-        currentExpectaion?.fulfill()
+        currentExpectation?.fulfill()
     }
 }

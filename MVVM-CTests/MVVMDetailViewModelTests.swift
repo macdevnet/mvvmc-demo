@@ -10,8 +10,19 @@ import XCTest
 
 class MVVMDetailViewModelTests: XCTestCase {
 
-    var currentExpectaion: XCTestExpectation?
+    var currentExpectation: XCTestExpectation?
     var expectedItem: DataItem?
+    
+    override func setUp() {
+        super.setUp()
+        currentExpectation = nil
+        expectedItem = nil
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        // Nothing
+    }
     
     func testInitialDefaults() {
         let vm = MVVMCDetailViewModel()
@@ -26,6 +37,7 @@ class MVVMDetailViewModelTests: XCTestCase {
         let item = MVVMCDataItem(name: "Test Name", role: "Test Role")
         let model = MVVMCDetailModel(detailItem: item)
         vm.model = model
+        
         XCTAssertNotNil(vm.detail)
         
         guard let detail = vm.detail else {
@@ -42,7 +54,7 @@ class MVVMDetailViewModelTests: XCTestCase {
         expectedItem = MVVMCDataItem(name: "Test Name", role: "Test Role")
         let model = MVVMCDetailModel(detailItem: expectedItem!)
         vm.viewDelegate = self
-        currentExpectaion =  expectation(description: "testDetailDidChange")
+        currentExpectation =  expectation(description: "testDetailDidChange")
         vm.model = model
         
         waitForExpectations(timeout: 1) { error in
@@ -53,7 +65,7 @@ class MVVMDetailViewModelTests: XCTestCase {
     func testCoordinatorDelegate() {
         let vm = MVVMCDetailViewModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectation(description: "testDetailDidChange")
+        currentExpectation =  expectation(description: "testDetailDidChange")
         vm.done()
         waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
@@ -66,12 +78,12 @@ extension MVVMDetailViewModelTests: DetailViewModelViewDelegate {
         XCTAssertNotNil(viewModel.detail)
         XCTAssertEqual(expectedItem?.name, viewModel.detail?.name)
         XCTAssertEqual(expectedItem?.role, viewModel.detail?.role)
-        currentExpectaion?.fulfill()
+        currentExpectation?.fulfill()
     }
 }
 
 extension MVVMDetailViewModelTests: DetailViewModelCoordinatorDelegate {
     func detailDidEndFor(viewModel: DetailViewModel) {
-        currentExpectaion?.fulfill()
+        currentExpectation?.fulfill()
     }
 }
