@@ -26,15 +26,13 @@ class MVVMCDetailViewController: UIViewController {
     fileprivate var isLoaded: Bool = false
 
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         isLoaded = true;
         refreshDisplay()
     }
 
-    fileprivate func refreshDisplay()
-    {
+    fileprivate func refreshDisplay() {
         guard isLoaded else { return }
         if let viewModel = viewModel {
             nameLabel.text = viewModel.detail?.name
@@ -45,18 +43,14 @@ class MVVMCDetailViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func doneButtonPressed(_ sender: AnyObject)
-    {
+    @IBAction func doneButtonPressed(_ sender: AnyObject) {
         viewModel?.done();
     }
     
 }
 
-extension MVVMCDetailViewController: DetailViewModelViewDelegate
-{
-    func detailDidChange(viewModel: DetailViewModel)
-    {
+extension MVVMCDetailViewController: DetailViewModelViewDelegate {
+    func detailDidChangeFor(viewModel: DetailViewModel) {
         refreshDisplay()
     }
 }

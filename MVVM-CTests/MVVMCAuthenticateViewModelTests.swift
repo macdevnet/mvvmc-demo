@@ -8,13 +8,11 @@
 
 import XCTest
 
-class MVVMCAuthenticateViewModelTests: XCTestCase
-{
+class MVVMCAuthenticateViewModelTests: XCTestCase {
     
     var currentExpectaion: XCTestExpectation?
     var expectedCanSubmit: Bool = false
     var expectedErrorMessage: String = ""
-    
     
     func testInitialDefaults() {
         let vm = MVVMCAuthenticateViewModel()
@@ -27,15 +25,13 @@ class MVVMCAuthenticateViewModelTests: XCTestCase
         XCTAssertNil(vm.coordinatorDelegate)
     }
     
-    func testEmail()
-    {
+    func testEmail() {
         let vm = MVVMCAuthenticateViewModel()
         vm.email = "scotty@example.com"
         XCTAssertEqual("scotty@example.com", vm.email)
     }
     
-    func testPassword()
-    {
+    func testPassword() {
         let vm = MVVMCAuthenticateViewModel()
         vm.password = "password"
         XCTAssertEqual("password", vm.password)
@@ -59,60 +55,54 @@ class MVVMCAuthenticateViewModelTests: XCTestCase
     }
     
     func testErrorMessageDidChange() {
-        
         let vm = MVVMCAuthenticateViewModel()
         vm.viewDelegate = self
         
-        currentExpectaion =  expectationWithDescription("estErrorMessageDidChange")
+        currentExpectaion =  expectation(description: "estErrorMessageDidChange")
         expectedErrorMessage = "Incomplete or Invalid Data";
         
         // Call submit with no model set on the viewModel should produce an error message
         vm.submit()
      
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
     }
     
-    func testCoordinatorDelegate()
-    {
+    func testCoordinatorDelegate() {
         let vm = MVVMCAuthenticateViewModel()
         vm.model = MVVMCAuthenticateModel()
         
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testCoordinatorDelegate")
+        currentExpectaion =  expectation(description: "testCoordinatorDelegate")
         
         vm.email = "scotty@example.com"
         vm.password = "password"
  
         vm.submit()
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.coordinatorDelegate = nil
         }
     }
 }
 
-extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelViewDelegate
-{
-    func canSubmitStatusDidChange(viewModel: AuthenticateViewModel, status: Bool)
-    {
+extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelViewDelegate {
+    func canSubmitStatusDidChangeFor(viewModel: AuthenticateViewModel, status: Bool) {
         XCTAssertEqual(expectedCanSubmit, status)
         XCTAssertEqual(expectedCanSubmit, viewModel.canSubmit)
         currentExpectaion?.fulfill()
     }
     
-    func errorMessageDidChange(viewModel: AuthenticateViewModel, message: String)
-    {
+    func errorMessageDidChangeFor(viewModel: AuthenticateViewModel, message: String) {
         XCTAssertEqual(expectedErrorMessage, message)
         XCTAssertEqual(expectedErrorMessage, viewModel.errorMessage)
         currentExpectaion?.fulfill()
     }
 }
 
-extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelCoordinatorDelegate
-{
-    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel) {
+extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelCoordinatorDelegate {
+    func authenticateDidLoginFor(viewModel: AuthenticateViewModel) {
         currentExpectaion?.fulfill()
     }
 }

@@ -8,10 +8,8 @@
 
 import Foundation
 
-class MVVMCAuthenticateModel: AuthenticateModel
-{
-    func login(email: String, password: String, completionHandler: @escaping (_ error: NSError?) ->())
-    {
+class MVVMCAuthenticateModel: AuthenticateModel {
+    func login(email: String, password: String, completionHandler: @escaping (_ error: NSError?) ->()) {
         
         // Simulate Aysnchronous data access
         DispatchQueue.global().async {

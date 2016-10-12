@@ -9,14 +9,13 @@
 import Foundation
 
 
-class MVVMCDetailViewModel: DetailViewModel
-{
+class MVVMCDetailViewModel: DetailViewModel {
     weak var viewDelegate: DetailViewModelViewDelegate?
     weak var coordinatorDelegate: DetailViewModelCoordinatorDelegate?
     
     fileprivate(set) var detail: DataItem? {
         didSet {
-            viewDelegate?.detailDidChange(viewModel: self)
+            viewDelegate?.detailDidChangeFor(viewModel: self)
         }
     }
     
@@ -29,7 +28,7 @@ class MVVMCDetailViewModel: DetailViewModel
     }
     
     func done() {
-        coordinatorDelegate?.detailViewModelDidEnd(self)
+        coordinatorDelegate?.detailDidEndFor(viewModel: self)
     }
     
 }

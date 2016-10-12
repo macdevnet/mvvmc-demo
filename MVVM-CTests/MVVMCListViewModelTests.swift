@@ -8,13 +8,11 @@
 
 import XCTest
 
-class MVVMCListViewModelTests: XCTestCase
-{
+class MVVMCListViewModelTests: XCTestCase {
     
     var currentExpectaion: XCTestExpectation?
     
-    func testDefaults()
-    {
+    func testDefaults() {
         let vm = MVVMCListViewModel()
         XCTAssertEqual(0,vm.numberOfItems)
         XCTAssertEqual("List", vm.title)
@@ -29,42 +27,49 @@ class MVVMCListViewModelTests: XCTestCase
         // We can test with the actual app model as it produces hard coded data
         // In normal testing we would create a ListModel implementation with fix test data to use,
         vm.model = MVVMCListModel()
-        XCTAssertEqual(7,vm.numberOfItems)
+        XCTAssertEqual(7, vm.numberOfItems)
     }
     
     func testItemAtIndex() {
-        
         let vm = MVVMCListViewModel()
         
         // We can test with the actual app model as it produces hard coded data
         // In normal testing we would create a ListModel implementation with fix test data to use,
         vm.model = MVVMCListModel()
         
+        // Test a value from the start, end, and middle of list
         
-        // Test a value from the start , end and middle of list
-        
-        var dataItem = vm.itemAtIndex(0)
+        var dataItem = vm.itemAt(index: 0)
         XCTAssertNotNil(dataItem)
         
-        guard let item = dataItem else { return }
+        guard let item = dataItem else {
+            XCTFail("Item not found from the start of the list")
+            return
+        }
         
         XCTAssertEqual("James T Kirk", item.name)
         XCTAssertEqual("Captain", item.role)
         
         
-        dataItem = vm.itemAtIndex(6)
+        dataItem = vm.itemAt(index: 6)
         XCTAssertNotNil(dataItem)
         
-        guard let item2 = dataItem else { return }
+        guard let item2 = dataItem else {
+            XCTFail("Item not found from the end of the list")
+            return
+        }
         
         XCTAssertEqual("Pavel Chekov", item2.name)
         XCTAssertEqual("Ensign", item2.role)
         
         
-        dataItem = vm.itemAtIndex(3)
+        dataItem = vm.itemAt(index: 3)
         XCTAssertNotNil(dataItem)
         
-        guard let item3 = dataItem else { return }
+        guard let item3 = dataItem else {
+            XCTFail("Item not found from the middle of the list")
+            return
+        }
         
         XCTAssertEqual("Montgomery Scott", item3.name)
         XCTAssertEqual("Lieutenant Commander", item3.role)
@@ -72,7 +77,6 @@ class MVVMCListViewModelTests: XCTestCase
     }
     
     func testItemAtIndexWithInvalidIndex() {
-        
         let vm = MVVMCListViewModel()
         
         // We can test with the actual app model as it produces hard coded data
@@ -80,32 +84,29 @@ class MVVMCListViewModelTests: XCTestCase
         vm.model = MVVMCListModel()
         
         // Test a value from beyond the end of the list
-        let dataItem = vm.itemAtIndex(vm.numberOfItems + 1)
+        let dataItem = vm.itemAt(index: vm.numberOfItems + 1)
         XCTAssertNil(dataItem)
     }
     
-    func testUseItemAtIndex()
-    {
-        
+    func testUseItemAtIndex() {
         let vm = MVVMCListViewModel()
         
         // We can test with the actual app model as it produces hard coded data
         // In normal testing we would create a ListModel implementation with fixed test data to use,
         vm.model = MVVMCListModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testUseItemAtIndex")
-        vm.useItemAtIndex(6)
+        currentExpectaion =  expectation(description: "testUseItemAtIndex")
+        vm.useItemAt(index: 6)
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.coordinatorDelegate = nil
         }
     }
 }
 
 
-extension MVVMCListViewModelTests: ListViewModelCoordinatorDelegate
-{
-    func listViewModelDidSelectData(viewModel: ListViewModel, data: DataItem) {
+extension MVVMCListViewModelTests: ListViewModelCoordinatorDelegate {
+    func listDidSelectDataFor(viewModel: ListViewModel, data: DataItem) {
         XCTAssertEqual("Pavel Chekov", data.name)
         XCTAssertEqual("Ensign", data.role)
         currentExpectaion?.fulfill()

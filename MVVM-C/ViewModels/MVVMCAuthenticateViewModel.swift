@@ -8,9 +8,7 @@
 
 import Foundation
 
-class MVVMCAuthenticateViewModel: AuthenticateViewModel
-{
-    
+class MVVMCAuthenticateViewModel: AuthenticateViewModel {
     weak var viewDelegate: AuthenticateViewModelViewDelegate?
     weak var coordinatorDelegate: AuthenticateViewModelCoordinatorDelegate?
     var model: AuthenticateModel?
@@ -23,7 +21,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
                 let oldCanSubmit = canSubmit
                 emailIsValidFormat = validateEmailFormat(email)
                 if canSubmit != oldCanSubmit {
-                    viewDelegate?.canSubmitStatusDidChange(self, status: canSubmit)
+                    viewDelegate?.canSubmitStatusDidChangeFor(viewModel: self, status: canSubmit)
                 }
             }
         }
@@ -39,7 +37,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
                 let oldCanSubmit = canSubmit
                 passwordIsValidFormat = validatePasswordFormat(password)
                 if canSubmit != oldCanSubmit {
-                    viewDelegate?.canSubmitStatusDidChange(self, status: canSubmit)
+                    viewDelegate?.canSubmitStatusDidChangeFor(viewModel: self, status: canSubmit)
                 }
             }
         }
@@ -59,13 +57,12 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     fileprivate(set) var errorMessage: String = "" {
         didSet {
             if oldValue != errorMessage {
-                viewDelegate?.errorMessageDidChange(self, message: errorMessage)
+                viewDelegate?.errorMessageDidChangeFor(viewModel: self, message: errorMessage)
             }
         }
     }
     
-    fileprivate func validateEmailFormat(_ email: String) -> Bool
-    {
+    fileprivate func validateEmailFormat(_ email: String) -> Bool {
         let REGEX: String
         REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
         return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: email)
@@ -73,15 +70,13 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     
     
     /// Validate password is at least 6 characters
-    fileprivate func validatePasswordFormat(_ password: String) -> Bool
-    {
+    fileprivate func validatePasswordFormat(_ password: String) -> Bool {
         let trimmedString = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         return trimmedString.characters.count > 5
     }
     
     
-    func submit()
-    {
+    func submit() {
         errorMessage = ""
         guard let dataModel = model , canSubmit else {
             errorMessage = NSLocalizedString("NOT_READY_TO_SUBMIT", comment: "")
@@ -89,10 +84,10 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
         }
         
         let modelCompletionHandler = { (error: NSError?) in
-            //Make sure we are on the main thread
+            // Make sure we are on the main thread
             DispatchQueue.main.async {
                 guard let error = error else {
-                    self.coordinatorDelegate?.authenticateViewModelDidLogin(viewModel: self)
+                    self.coordinatorDelegate?.authenticateDidLoginFor(viewModel: self)
                     return
                 }
                 self.errorMessage = error.localizedDescription

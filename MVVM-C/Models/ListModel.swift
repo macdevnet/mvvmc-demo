@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-protocol ListModel
-{
+protocol ListModel {
     func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void)
 }

@@ -8,15 +8,13 @@
 
 import Foundation
 
-class MVVMCListViewModel: ListViewModel
-{
-    
+class MVVMCListViewModel: ListViewModel {
     weak var viewDelegate: ListViewModelViewDelegate?
     weak var coordinatorDelegate: ListViewModelCoordinatorDelegate?
 
     fileprivate var items: [DataItem]? {
         didSet {
-            viewDelegate?.itemsDidChange(viewModel: self)
+            viewDelegate?.itemsDidChangeFor(viewModel: self)
         }
     }
 
@@ -29,30 +27,24 @@ class MVVMCListViewModel: ListViewModel
         }
     }
     
-    
     var title: String {
         return "List"
     }
     
     var numberOfItems: Int {
-        if let items = items {
-            return items.count
-        }
-        return 0
+        return items?.count ?? 0
     }
     
-    func itemAtIndex(_ index: Int) -> DataItem?
-    {
-        if let items = items , items.count > index {
+    func itemAt(index: Int) -> DataItem? {
+        if let items = items, items.count > index {
             return items[index]
         }
         return nil
     }
     
-    func useItemAtIndex(_ index: Int)
-    {
-        if let items = items, let coordinatorDelegate = coordinatorDelegate  , index < items.count {
-            coordinatorDelegate.listViewModelDidSelectData(self, data: items[index])
+    func useItemAt(index: Int) {
+        if let items = items, let coordinatorDelegate = coordinatorDelegate, index < items.count {
+            coordinatorDelegate.listDidSelectDataFor(viewModel: self, data: items[index])
         }
     }
 }

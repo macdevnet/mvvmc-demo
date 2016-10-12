@@ -8,8 +8,7 @@
 
 import UIKit
 
-class MVVMCAuthenticationViewController: UIViewController
-{
+class MVVMCAuthenticationViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -28,8 +27,7 @@ class MVVMCAuthenticationViewController: UIViewController
     
     fileprivate var isLoaded: Bool = false
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         title = "Login"
         isLoaded = true;
         
@@ -39,8 +37,7 @@ class MVVMCAuthenticationViewController: UIViewController
         refreshDisplay()
     }
     
-    fileprivate func refreshDisplay()
-    {
+    fileprivate func refreshDisplay() {
         guard isLoaded else { return }
         
         if let viewModel = viewModel {
@@ -56,20 +53,17 @@ class MVVMCAuthenticationViewController: UIViewController
         }
     }
     
-    @IBAction func loginButtonPressed(_ sender: AnyObject)
-    {
+    @IBAction func loginButtonPressed(_ sender: AnyObject) {
         viewModel?.submit()
     }
     
-    func emailFieldDidChange(_ textField: UITextField)
-    {
+    func emailFieldDidChange(_ textField: UITextField) {
         if let text = textField.text {
             viewModel?.email = text
         }
     }
     
-    func passwordFieldDidChange(_ textField: UITextField)
-    {
+    func passwordFieldDidChange(_ textField: UITextField) {
         if let text = textField.text {
             viewModel?.password = text
         }
@@ -78,16 +72,12 @@ class MVVMCAuthenticationViewController: UIViewController
 
 
 /// AuthenticateViewModelViewDelegate Implementation
-extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate
-{
-    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool)
-    {
+extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate {
+    func canSubmitStatusDidChangeFor(viewModel: AuthenticateViewModel, status: Bool) {
         loginButton.isEnabled = status
     }
     
-    
-    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String)
-    {
+    func errorMessageDidChangeFor(viewModel: AuthenticateViewModel, message: String) {
         errorMessageLabel.text = message
     }
 }

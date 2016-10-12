@@ -22,8 +22,7 @@ class MVVMCListViewController: UITableViewController {
     
     var isLoaded: Bool = false
     
-    func refreshDisplay()
-    {
+    func refreshDisplay() {
         if let viewModel = viewModel , isLoaded {
             title = viewModel.title
         } else {
@@ -32,8 +31,7 @@ class MVVMCListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         
@@ -43,15 +41,12 @@ class MVVMCListViewController: UITableViewController {
     
 }
 
-extension MVVMCListViewController
-{
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
+extension MVVMCListViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let viewModel = viewModel {
             return viewModel.numberOfItems
         }
@@ -61,20 +56,17 @@ extension MVVMCListViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! MVVMCItemTableViewCell
-        cell.item = viewModel?.itemAtIndex((indexPath as NSIndexPath).row)
+        cell.item = viewModel?.itemAt(index: (indexPath as NSIndexPath).row)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        viewModel?.useItemAtIndex((indexPath as NSIndexPath).row)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.useItemAt(index: (indexPath as NSIndexPath).row)
     }
 }
 
-extension MVVMCListViewController: ListViewModelViewDelegate
-{
-    func itemsDidChange(viewModel: ListViewModel)
-    {
+extension MVVMCListViewController: ListViewModelViewDelegate {
+    func itemsDidChangeFor(viewModel: ListViewModel) {
         tableView.reloadData()
     }
 }
