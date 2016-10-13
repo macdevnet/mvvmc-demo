@@ -22,3 +22,10 @@ class MVVMCDetailModel: DetailModel {
         }
     }
 }
+
+class TestableMVVMCDetailModel: MVVMCDetailModel {
+    // Having async in here makes this very untestable as the expectation cannot easily be inserted!
+    override func detail(_ completionHandler: @escaping (DataItem?) -> Void) {
+        completionHandler(self.item)
+    }
+}

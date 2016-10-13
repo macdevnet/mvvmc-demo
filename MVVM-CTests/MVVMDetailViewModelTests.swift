@@ -35,7 +35,7 @@ class MVVMDetailViewModelTests: XCTestCase {
     func testDetail() {
         let vm = MVVMCDetailViewModel()
         let item = MVVMCDataItem(name: "Test Name", role: "Test Role")
-        let model = MVVMCDetailModel(detailItem: item)
+        let model = TestableMVVMCDetailModel(detailItem: item)
         vm.model = model
         
         XCTAssertNotNil(vm.detail)
@@ -52,7 +52,7 @@ class MVVMDetailViewModelTests: XCTestCase {
     func testDetailDidChange() {
         let vm = MVVMCDetailViewModel()
         expectedItem = MVVMCDataItem(name: "Test Name", role: "Test Role")
-        let model = MVVMCDetailModel(detailItem: expectedItem!)
+        let model = TestableMVVMCDetailModel(detailItem: expectedItem!)
         vm.viewDelegate = self
         currentExpectation =  expectation(description: "testDetailDidChange")
         vm.model = model

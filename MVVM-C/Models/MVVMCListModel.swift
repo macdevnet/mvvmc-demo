@@ -33,3 +33,9 @@ class MVVMCListModel: ListModel {
     }
 }
    
+class TestableMVVMCListModel: MVVMCListModel {
+    // Having async in here makes this very untestable as the expectation cannot easily be inserted!
+    override func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void) {
+        completionHandler(self.items)
+    }
+}

@@ -33,19 +33,13 @@ class MVVMCListViewModelTests: XCTestCase {
     
     func testNumberOfItems() {
         let vm = MVVMCListViewModel()
-        
-        // We can test with the actual app model as it produces hard coded data
-        // In normal testing we would create a ListModel implementation with fix test data to use,
-        vm.model = MVVMCListModel()
+        vm.model = TestableMVVMCListModel()
         XCTAssertEqual(7, vm.numberOfItems)
     }
     
     func testItemAtIndex() {
         let vm = MVVMCListViewModel()
-        
-        // We can test with the actual app model as it produces hard coded data
-        // In normal testing we would create a ListModel implementation with fix test data to use,
-        vm.model = MVVMCListModel()
+        vm.model = TestableMVVMCListModel()
         
         // Test a value from the start, end, and middle of list
         
@@ -88,10 +82,7 @@ class MVVMCListViewModelTests: XCTestCase {
     
     func testItemAtIndexWithInvalidIndex() {
         let vm = MVVMCListViewModel()
-        
-        // We can test with the actual app model as it produces hard coded data
-        // In normal testing we would create a ListModel implementation with fixed test data to use,
-        vm.model = MVVMCListModel()
+        vm.model = TestableMVVMCListModel()
         
         // Test a value from beyond the end of the list
         let dataItem = vm.itemAt(index: vm.numberOfItems + 1)
@@ -99,11 +90,8 @@ class MVVMCListViewModelTests: XCTestCase {
     }
     
     func testUseItemAtIndex() {
-        let vm = MVVMCListViewModel()
-        
-        // We can test with the actual app model as it produces hard coded data
-        // In normal testing we would create a ListModel implementation with fixed test data to use,
-        vm.model = MVVMCListModel()
+        let vm = MVVMCListViewModel()        
+        vm.model = TestableMVVMCListModel()
         vm.coordinatorDelegate = self
         currentExpectation =  expectation(description: "testUseItemAtIndex")
         vm.useItemAt(index: 6)
