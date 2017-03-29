@@ -44,10 +44,10 @@ class MVVMDetailViewModelTests: XCTestCase
         expectedItem = MVVMCDataItem(name: "Test Name", role: "Test Role")
         let model = MVVMCDetailModel(detailItem: expectedItem!)
         vm.viewDelegate = self
-        currentExpectaion =  expectationWithDescription("testDetailDidChange")
+        currentExpectaion =  expectation(description: "testDetailDidChange")
         vm.model = model
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
     }
@@ -56,9 +56,9 @@ class MVVMDetailViewModelTests: XCTestCase
     {
         let vm = MVVMCDetailViewModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testDetailDidChange")
+        currentExpectaion =  expectation(description: "testDetailDidChange")
         vm.done()
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
    }
@@ -76,7 +76,7 @@ extension MVVMDetailViewModelTests: DetailViewModelViewDelegate
 
 extension MVVMDetailViewModelTests: DetailViewModelCoordinatorDelegate
 {
-    func detailViewModelDidEnd(viewModel: DetailViewModel) {
+    func detailViewModelDidEnd(_ viewModel: DetailViewModel) {
         currentExpectaion?.fulfill()
     }
 }
