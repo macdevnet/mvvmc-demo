@@ -63,3 +63,11 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# JetBrains AppCode user-specific files
+/.idea/atlassian-ide-plugin.xml
+/.idea/codeStyles/
+/.idea/markdown-navigator.xml
+/.idea/markdown-navigator/
+/.idea/misc.xml
+/.idea/workspace.xml
