@@ -13,8 +13,8 @@ class MVVMDetailViewModelTests: XCTestCase
 
     var currentExpectaion: XCTestExpectation?
     var expectedItem: DataItem?
-    
-    
+
+
     func testInitialDefaults() {
         let vm = MVVMCDetailViewModel()
         XCTAssertNil(vm.detail)
@@ -22,7 +22,7 @@ class MVVMDetailViewModelTests: XCTestCase
         XCTAssertNil(vm.model)
         XCTAssertNil(vm.coordinatorDelegate)
     }
-    
+
     func testDetail()
     {
         let vm = MVVMCDetailViewModel()
@@ -30,35 +30,35 @@ class MVVMDetailViewModelTests: XCTestCase
         let model = MVVMCDetailModel(detailItem: item)
         vm.model = model
         XCTAssertNotNil(vm.detail)
-        
+
         guard let detail = vm.detail else { return }
-        
+
         XCTAssertEqual("Test Name", detail.name)
         XCTAssertEqual("Test Role", detail.role)
     }
-    
-    
+
+
     func testDetailDidChange() {
-        
+
         let vm = MVVMCDetailViewModel()
         expectedItem = MVVMCDataItem(name: "Test Name", role: "Test Role")
         let model = MVVMCDetailModel(detailItem: expectedItem!)
         vm.viewDelegate = self
-        currentExpectaion =  expectationWithDescription("testDetailDidChange")
+        currentExpectaion =  expectation(description: "testDetailDidChange")
         vm.model = model
-        
-        waitForExpectationsWithTimeout(1) { error in
+
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
     }
-    
+
     func testCoordinatorDelegate()
     {
         let vm = MVVMCDetailViewModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testDetailDidChange")
+        currentExpectaion =  expectation(description: "testDetailDidChange")
         vm.done()
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
    }
@@ -66,7 +66,7 @@ class MVVMDetailViewModelTests: XCTestCase
 
 extension MVVMDetailViewModelTests: DetailViewModelViewDelegate
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel) {
+    func detailDidChange(viewModel: DetailViewModel) {
         XCTAssertNotNil(viewModel.detail)
         XCTAssertEqual(expectedItem?.name, viewModel.detail?.name)
         XCTAssertEqual(expectedItem?.role, viewModel.detail?.role)
@@ -76,7 +76,7 @@ extension MVVMDetailViewModelTests: DetailViewModelViewDelegate
 
 extension MVVMDetailViewModelTests: DetailViewModelCoordinatorDelegate
 {
-    func detailViewModelDidEnd(viewModel: DetailViewModel) {
+    func detailViewModelDidEnd(_ viewModel: DetailViewModel) {
         currentExpectaion?.fulfill()
     }
 }
