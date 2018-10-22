@@ -63,13 +63,13 @@ class MVVMCAuthenticateViewModelTests: XCTestCase
         let vm = MVVMCAuthenticateViewModel()
         vm.viewDelegate = self
         
-        currentExpectaion =  expectationWithDescription("estErrorMessageDidChange")
+        currentExpectaion =  expectation(description: "estErrorMessageDidChange")
         expectedErrorMessage = "Incomplete or Invalid Data";
         
         // Call submit with no model set on the viewModel should produce an error message
         vm.submit()
      
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.viewDelegate = nil
         }
     }
@@ -80,14 +80,14 @@ class MVVMCAuthenticateViewModelTests: XCTestCase
         vm.model = MVVMCAuthenticateModel()
         
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testCoordinatorDelegate")
+        currentExpectaion =  expectation(description: "testCoordinatorDelegate")
         
         vm.email = "scotty@example.com"
         vm.password = "password"
  
         vm.submit()
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.coordinatorDelegate = nil
         }
     }
@@ -95,14 +95,14 @@ class MVVMCAuthenticateViewModelTests: XCTestCase
 
 extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelViewDelegate
 {
-    func canSubmitStatusDidChange(viewModel: AuthenticateViewModel, status: Bool)
+    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool)
     {
         XCTAssertEqual(expectedCanSubmit, status)
         XCTAssertEqual(expectedCanSubmit, viewModel.canSubmit)
         currentExpectaion?.fulfill()
     }
     
-    func errorMessageDidChange(viewModel: AuthenticateViewModel, message: String)
+    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String)
     {
         XCTAssertEqual(expectedErrorMessage, message)
         XCTAssertEqual(expectedErrorMessage, viewModel.errorMessage)
@@ -112,7 +112,7 @@ extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelViewDelegate
 
 extension MVVMCAuthenticateViewModelTests: AuthenticateViewModelCoordinatorDelegate
 {
-    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel) {
+    func authenticateViewModelDidLogin(viewModel: AuthenticateViewModel) {
         currentExpectaion?.fulfill()
     }
 }

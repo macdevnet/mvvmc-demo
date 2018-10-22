@@ -93,10 +93,10 @@ class MVVMCListViewModelTests: XCTestCase
         // In normal testing we would create a ListModel implementation with fixed test data to use,
         vm.model = MVVMCListModel()
         vm.coordinatorDelegate = self
-        currentExpectaion =  expectationWithDescription("testUseItemAtIndex")
+        currentExpectaion =  expectation(description: "testUseItemAtIndex")
         vm.useItemAtIndex(6)
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             vm.coordinatorDelegate = nil
         }
     }
@@ -105,7 +105,7 @@ class MVVMCListViewModelTests: XCTestCase
 
 extension MVVMCListViewModelTests: ListViewModelCoordinatorDelegate
 {
-    func listViewModelDidSelectData(viewModel: ListViewModel, data: DataItem) {
+    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem) {
         XCTAssertEqual("Pavel Chekov", data.name)
         XCTAssertEqual("Ensign", data.role)
         currentExpectaion?.fulfill()
