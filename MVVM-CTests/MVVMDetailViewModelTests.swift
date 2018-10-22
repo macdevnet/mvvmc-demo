@@ -66,7 +66,7 @@ class MVVMDetailViewModelTests: XCTestCase
 
 extension MVVMDetailViewModelTests: DetailViewModelViewDelegate
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel) {
+    func detailDidChange(viewModel: DetailViewModel) {
         XCTAssertNotNil(viewModel.detail)
         XCTAssertEqual(expectedItem?.name, viewModel.detail?.name)
         XCTAssertEqual(expectedItem?.role, viewModel.detail?.role)
