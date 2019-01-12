@@ -33,8 +33,8 @@ class MVVMCAuthenticationViewController: UIViewController
         title = "Login"
         isLoaded = true;
         
-        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
         refreshDisplay()
     }
@@ -61,14 +61,14 @@ class MVVMCAuthenticationViewController: UIViewController
         viewModel?.submit()
     }
     
-    func emailFieldDidChange(_ textField: UITextField)
+    @objc func emailFieldDidChange(_ textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.email = text
         }
     }
     
-    func passwordFieldDidChange(_ textField: UITextField)
+    @objc func passwordFieldDidChange(_ textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.password = text
