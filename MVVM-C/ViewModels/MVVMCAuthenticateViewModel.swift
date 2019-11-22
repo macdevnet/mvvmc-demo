@@ -76,7 +76,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     fileprivate func validatePasswordFormat(_ password: String) -> Bool
     {
         let trimmedString = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        return trimmedString.characters.count > 5
+        return trimmedString.count > 5
     }
     
     
