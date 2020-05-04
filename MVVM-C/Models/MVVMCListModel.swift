@@ -8,16 +8,14 @@
 
 import Foundation
 
-class MVVMCListModel: ListModel
-{
+class MVVMCListModel: ListModel {
     fileprivate var items = [DataItem]()
-    
+
     init() {
         createDataItems()
     }
-    
-    fileprivate func createDataItems()
-    {
+
+    fileprivate func createDataItems() {
         items.append(MVVMCDataItem(name: "James T Kirk", role: "Captain"))
         items.append(MVVMCDataItem(name: "Spock", role: "Commander"))
         items.append(MVVMCDataItem(name: "Leonard McCoy", role: "Lieutenant Commander"))
@@ -26,13 +24,11 @@ class MVVMCListModel: ListModel
         items.append(MVVMCDataItem(name: "Hikaru Sulu", role: "Lieutenant"))
         items.append(MVVMCDataItem(name: "Pavel Chekov", role: "Ensign"))
     }
-    
-    func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void)
-    {
+
+    func items(_ completionHandler: @escaping (_ items: [DataItem]) -> Void) {
         // Simulate Aysnchronous data access
         DispatchQueue.global().async {
             completionHandler(self.items)
         }
     }
 }
-   

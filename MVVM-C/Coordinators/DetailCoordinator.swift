@@ -8,26 +8,21 @@
 
 import UIKit
 
-
-protocol DetailCoordinatorDelegate: class
-{
+protocol DetailCoordinatorDelegate: class {
     func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator)
 }
 
-class DetailCoordinator: Coordinator
-{
+class DetailCoordinator: Coordinator {
     weak var delegate: DetailCoordinatorDelegate?
     let dataItem: DataItem
     var window: UIWindow
-    
-    init(window: UIWindow, dataItem: DataItem)
-    {
+
+    init(window: UIWindow, dataItem: DataItem) {
         self.window = window
         self.dataItem = dataItem
     }
-    
-    func start()
-    {
+
+    func start() {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "Detail") as? MVVMCDetailViewController {
             let viewModel =  MVVMCDetailViewModel()
@@ -39,12 +34,8 @@ class DetailCoordinator: Coordinator
     }
 }
 
-extension DetailCoordinator: DetailViewModelCoordinatorDelegate
-{
-    
- func detailViewModelDidEnd(_ viewModel: DetailViewModel)
- {
-    delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
- }
-    
+extension DetailCoordinator: DetailViewModelCoordinatorDelegate {
+    func detailViewModelDidEnd(_ viewModel: DetailViewModel) {
+        delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
+    }
 }

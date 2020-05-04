@@ -8,31 +8,27 @@
 
 import UIKit
 
-protocol ListCoordinatorDelegate: class
-{
+protocol ListCoordinatorDelegate: class {
     func listCoordinatorDidFinish(listCoordinator: ListCoordinator)
 }
 
-class ListCoordinator: Coordinator
-{
-    
-    init(window: UIWindow)
-    {
+class ListCoordinator: Coordinator {
+
+    init(window: UIWindow) {
         self.window = window
     }
-    
+
     weak var delegate: ListCoordinatorDelegate?
     var detailCoordinator: DetailCoordinator?
     var window: UIWindow
     var listViewController: MVVMCListViewController?
-    
-    func start()
-    {
+
+    func start() {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         listViewController = storyboard.instantiateViewController(withIdentifier: "List") as? MVVMCListViewController
-        
+
         guard let listViewController = listViewController else { return }
-        
+
         let viewModel =  MVVMCListViewModel()
         viewModel.model = MVVMCListModel()
         viewModel.coordinatorDelegate = self
@@ -41,22 +37,17 @@ class ListCoordinator: Coordinator
     }
 }
 
-extension ListCoordinator: ListViewModelCoordinatorDelegate
-{
-    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem)
-    {
+extension ListCoordinator: ListViewModelCoordinatorDelegate {
+    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem) {
         detailCoordinator = DetailCoordinator(window: window, dataItem: data)
         detailCoordinator?.delegate = self
         detailCoordinator?.start()
     }
 }
 
-extension ListCoordinator: DetailCoordinatorDelegate
-{
-    func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator)
-    {
+extension ListCoordinator: DetailCoordinatorDelegate {
+    func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator) {
         self.detailCoordinator = nil
         window.rootViewController = listViewController
     }
 }
-

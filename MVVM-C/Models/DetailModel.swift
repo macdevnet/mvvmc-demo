@@ -8,7 +8,6 @@
 
 import Foundation
 
-protocol DetailModel
-{
+protocol DetailModel {
     func detail(_ completionHandler: @escaping (_ item: DataItem?) -> Void)
 }

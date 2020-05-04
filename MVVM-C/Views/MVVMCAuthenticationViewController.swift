@@ -8,14 +8,12 @@
 
 import UIKit
 
-class MVVMCAuthenticationViewController: UIViewController
-{
-    
+class MVVMCAuthenticationViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
-  
+
     var viewModel: AuthenticateViewModel? {
         willSet {
             viewModel?.viewDelegate = nil
@@ -25,24 +23,22 @@ class MVVMCAuthenticationViewController: UIViewController
             refreshDisplay()
         }
     }
-    
+
     fileprivate var isLoaded: Bool = false
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         title = "Login"
-        isLoaded = true;
-        
-        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        isLoaded = true
+
+        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
         refreshDisplay()
     }
-    
-    fileprivate func refreshDisplay()
-    {
+
+    fileprivate func refreshDisplay() {
         guard isLoaded else { return }
-        
+
         if let viewModel = viewModel {
             emailField.text = viewModel.email
             passwordField.text = viewModel.password
@@ -55,39 +51,31 @@ class MVVMCAuthenticationViewController: UIViewController
             loginButton.isEnabled = false
         }
     }
-    
-    @IBAction func loginButtonPressed(_ sender: AnyObject)
-    {
+
+    @IBAction func loginButtonPressed(_ sender: AnyObject) {
         viewModel?.submit()
     }
     
-    func emailFieldDidChange(_ textField: UITextField)
-    {
+    @objc func emailFieldDidChange(_ textField: UITextField) {
         if let text = textField.text {
             viewModel?.email = text
         }
     }
     
-    func passwordFieldDidChange(_ textField: UITextField)
-    {
+    @objc func passwordFieldDidChange(_ textField: UITextField) {
         if let text = textField.text {
             viewModel?.password = text
         }
     }
 }
 
-
 /// AuthenticateViewModelViewDelegate Implementation
-extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate
-{
-    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool)
-    {
+extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate {
+    func canSubmitStatusDidChange(_ viewModel: AuthenticateViewModel, status: Bool) {
         loginButton.isEnabled = status
     }
-    
-    
-    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String)
-    {
+
+    func errorMessageDidChange(_ viewModel: AuthenticateViewModel, message: String) {
         errorMessageLabel.text = message
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class MVVMCListViewController: UITableViewController {
-    
+
     var viewModel: ListViewModel? {
         willSet {
             viewModel?.viewDelegate = nil
@@ -19,11 +19,10 @@ class MVVMCListViewController: UITableViewController {
             refreshDisplay()
         }
     }
-    
+
     var isLoaded: Bool = false
-    
-    func refreshDisplay()
-    {
+
+    func refreshDisplay() {
         if let viewModel = viewModel , isLoaded {
             title = viewModel.title
         } else {
@@ -31,50 +30,38 @@ class MVVMCListViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+
         isLoaded = true
-        refreshDisplay();
+        refreshDisplay()
     }
-    
 }
 
-extension MVVMCListViewController
-{
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
-    }
+extension MVVMCListViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int { 1 }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if let viewModel = viewModel {
-            return viewModel.numberOfItems
-        }
-        
-        return 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.map { $0.numberOfItems } ?? 0
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! MVVMCItemTableViewCell
-        cell.item = viewModel?.itemAtIndex((indexPath as NSIndexPath).row)
+        cell.item = viewModel?.itemAtIndex(indexPath.row)
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        viewModel?.useItemAtIndex((indexPath as NSIndexPath).row)
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.useItemAtIndex(indexPath.row)
     }
 }
 
-extension MVVMCListViewController: ListViewModelViewDelegate
-{
-    func itemsDidChange(viewModel: ListViewModel)
-    {
-        tableView.reloadData()
+extension MVVMCListViewController: ListViewModelViewDelegate {
+    func itemsDidChange(viewModel: ListViewModel) {
+        DispatchQueue.main.async { [unowned self] in
+            self.tableView.reloadData()
+        }
     }
 }
