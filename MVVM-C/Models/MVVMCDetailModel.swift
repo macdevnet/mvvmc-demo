@@ -9,7 +9,7 @@
 import Foundation
 
 class MVVMCDetailModel: DetailModel {
-    fileprivate var item: DataItem?
+    fileprivate var item: DataItem
 
     init(detailItem: DataItem) {
         self.item = detailItem
