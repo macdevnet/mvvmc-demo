@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MVVMCAuthenticateModel: AuthenticateModel {
+struct MVVMCAuthenticateModel: AuthenticateModel {
     func login(
         email: String,
         password: String,

@@ -8,14 +8,14 @@
 
 import Foundation
 
-class MVVMCListModel: ListModel {
+struct MVVMCListModel: ListModel {
     fileprivate var items = [DataItem]()
 
     init() {
         createDataItems()
     }
 
-    fileprivate func createDataItems() {
+    fileprivate mutating func createDataItems() {
         items.append(MVVMCDataItem(name: "James T Kirk", role: "Captain"))
         items.append(MVVMCDataItem(name: "Spock", role: "Commander"))
         items.append(MVVMCDataItem(name: "Leonard McCoy", role: "Lieutenant Commander"))

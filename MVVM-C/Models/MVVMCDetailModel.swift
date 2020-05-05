@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MVVMCDetailModel: DetailModel {
+struct MVVMCDetailModel: DetailModel {
     fileprivate var item: DataItem
 
     init(detailItem: DataItem) {
