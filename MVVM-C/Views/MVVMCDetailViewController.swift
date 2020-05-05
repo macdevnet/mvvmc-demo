@@ -12,7 +12,7 @@ class MVVMCDetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
-    
+
     var viewModel: DetailViewModel? {
         willSet {
             viewModel?.viewDelegate = nil
@@ -22,19 +22,16 @@ class MVVMCDetailViewController: UIViewController {
             refreshDisplay()
         }
     }
-    
+
     fileprivate var isLoaded: Bool = false
 
-    
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         isLoaded = true;
         refreshDisplay()
     }
 
-    fileprivate func refreshDisplay()
-    {
+    fileprivate func refreshDisplay() {
         guard isLoaded else { return }
         if let viewModel = viewModel {
             nameLabel.text = viewModel.detail?.name
@@ -44,19 +41,14 @@ class MVVMCDetailViewController: UIViewController {
             roleLabel.text = ""
         }
     }
-    
-    
-    @IBAction func doneButtonPressed(_ sender: AnyObject)
-    {
-        viewModel?.done();
+
+    @IBAction func doneButtonPressed(_ sender: AnyObject) {
+        viewModel?.done()
     }
-    
 }
 
-extension MVVMCDetailViewController: DetailViewModelViewDelegate
-{
-    func detailDidChange(viewModel: DetailViewModel)
-    {
+extension MVVMCDetailViewController: DetailViewModelViewDelegate {
+    func detailDidChange(viewModel: DetailViewModel) {
         refreshDisplay()
     }
 }

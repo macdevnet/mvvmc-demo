@@ -8,13 +8,11 @@
 
 import Foundation
 
-struct MVVMCDataItem: DataItem
-{
+struct MVVMCDataItem: DataItem {
     let name: String
     let role: String
-    
-    init(name: String, role: String)
-    {
+
+    init(name: String, role: String) {
         self.name = name
         self.role = role
     }

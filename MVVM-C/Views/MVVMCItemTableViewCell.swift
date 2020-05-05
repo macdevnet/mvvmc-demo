@@ -11,7 +11,7 @@ import UIKit
 class MVVMCItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    
+
     var item: DataItem? {
         didSet {
             if let item = item {
@@ -21,5 +21,4 @@ class MVVMCItemTableViewCell: UITableViewCell {
             }
         }
     }
-
 }
