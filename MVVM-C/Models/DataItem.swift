@@ -8,8 +8,7 @@
 
 import Foundation
 
-protocol DataItem
-{
+protocol DataItem {
     var name: String { get }
     var role: String { get }
 }

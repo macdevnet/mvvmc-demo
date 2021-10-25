@@ -8,18 +8,14 @@
 
 import Foundation
 
-class MVVMCDetailModel: DetailModel
-{
-    
-    fileprivate var item: DataItem?
-    
-    init(detailItem: DataItem)
-    {
+struct MVVMCDetailModel: DetailModel {
+    fileprivate var item: DataItem
+
+    init(detailItem: DataItem) {
         self.item = detailItem
     }
-    
-    func detail(_ completionHandler: @escaping (_ item: DataItem?) -> Void)
-    {
+
+    func detail(_ completionHandler: @escaping (_ item: DataItem?) -> Void) {
         // Simulate Aysnchronous data access
         DispatchQueue.global().async {
             completionHandler(self.item)

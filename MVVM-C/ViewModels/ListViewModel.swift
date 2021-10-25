@@ -8,24 +8,21 @@
 
 import Foundation
 
-protocol ListViewModelViewDelegate: class
-{
+protocol ListViewModelViewDelegate: class {
     func itemsDidChange(viewModel: ListViewModel)
 }
 
-protocol ListViewModelCoordinatorDelegate: class
-{
+protocol ListViewModelCoordinatorDelegate: class {
     func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem)
 }
 
-protocol ListViewModel
-{
+protocol ListViewModel {
     var model: ListModel? { get set }
     var viewDelegate: ListViewModelViewDelegate? { get set }
-    var coordinatorDelegate: ListViewModelCoordinatorDelegate? { get set}
-    
+    var coordinatorDelegate: ListViewModelCoordinatorDelegate? { get set }
+
     var title: String { get }
-    
+
     var numberOfItems: Int { get }
     func itemAtIndex(_ index: Int) -> DataItem?
     func useItemAtIndex(_ index: Int)
